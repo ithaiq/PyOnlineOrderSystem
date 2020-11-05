@@ -1,0 +1,79 @@
+{extend name="publics/base" /}
+{block name="body"}
+		<div class="breadcrumbs" id="breadcrumbs">
+			<script type="text/javascript">
+				try{ace.settings.check('breadcrumbs' , 'fixed')}catch(e){}
+			</script>
+
+			<ul class="breadcrumb">
+				<li>
+					<i class="icon-home home-icon"></i>
+					<a href="{:url('Index/index')}">首页</a>
+				</li>
+				<li class="active">用户管理</li>
+			</ul><!-- .breadcrumb -->
+		</div>
+		<div class="page-content">
+			<div class="page-header">
+				<h1>
+					用户管理
+					<small>
+						<i class="icon-double-angle-right"></i>
+						 用户组列表
+					</small>
+				</h1>
+			</div><!-- /.page-header -->
+
+			<div class="row">
+				<div class="col-xs-12">
+					<table id="sample-table-1" class="table table-striped table-bordered table-hover">
+						<thead>
+							<tr>
+								<th>组id</th>
+								<th>组名</th>
+								<th>分组状态</th>
+								<th>规则组id</th>
+								<th>创建时间</th>
+								<th>操作</th>
+							</tr>
+						</thead>
+
+						<tbody>
+
+							{volist name="groupList" id="list"}
+							<tr>
+								<td>{$list.id}</td>
+								<td>{$list.title}</td>
+								<td>
+									{if condition="$list.status eq 1"}
+									<a href="{:url('User/lockGroup',['id'=>$list.id,'status'=>-1])}" title=""><span class="label label-sm label-success">使用中</span></a>
+									{else}
+									<a href="{:url('User/lockGroup',['id'=>$list.id,'status'=>1])}" title=""><span class="label label-sm label-warning">已锁定</span></a>
+									{/if}
+								</td>
+								<td>{$list.rules}</td>
+								<td>{$list.create_time}</td>
+								<td>
+									<div class="visible-md visible-lg hidden-sm hidden-xs btn-group">
+										<a class="btn btn-xs btn-info" href="{:url('User/editGroup',['id'=>$list.id])}">
+											<i class="icon-edit bigger-120"></i>
+										</a>
+										{if condition="$list.id neq 1"}
+										<a class="btn btn-xs btn-danger" href="{:url('User/delGroup',['id'=>$list.id])}" onclick="javascript:return confirm('是否要删除本条记录?')">
+											<i class="icon-trash bigger-120"></i>
+										</a>
+										{/if}
+									</div>
+								</td>
+							</tr>
+							{/volist}
+
+						</tbody>
+					</table>
+					<div class="col-md-6 col-md-offset-5">
+						{$groupList->render()}
+					</div>
+				</div>
+			</div>
+		</div>
+{/block}

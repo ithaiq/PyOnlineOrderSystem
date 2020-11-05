@@ -1,0 +1,79 @@
+{extend name="publics/base" /}
+{block name="body"}
+		<div class="breadcrumbs" id="breadcrumbs">
+			<script type="text/javascript">
+				try{ace.settings.check('breadcrumbs' , 'fixed')}catch(e){}
+			</script>
+
+			<ul class="breadcrumb">
+				<li>
+					<i class="icon-home home-icon"></i>
+					<a href="{:url('Index/index')}">首页</a>
+				</li>
+				<li class="active">用户管理</li>
+			</ul><!-- .breadcrumb -->
+		</div>
+
+		<div class="page-content">
+			<div class="page-header">
+				<h1>
+					用户管理
+					<small>
+						<i class="icon-double-angle-right"></i>
+						 编辑组信息
+					</small>
+				</h1>
+			</div><!-- /.page-header -->
+
+			<div class="row">
+				<div class="col-xs-12">
+					<form class="form-horizontal row" role="form" method="post" action="">
+						<div class="form-group">
+							<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> 组名 </label>
+
+							<div class="col-sm-9">
+								<input type="text" id="form-field-1" placeholder="Username" name="title" class="col-xs-10 col-sm-5" required="" value="{$groupInfo.title}">
+							</div>
+						</div>
+
+						<div class="form-group">
+							<label class="col-sm-3 control-label no-padding-right" for="form-field-2"> 添加权限 </label>
+							<div class="col-sm-2">
+								<div class="control-group">
+								{volist name="rulesInfo" id="rules" }
+								{if condition="$rules.checked eq 1"}
+									<div class="checkbox">
+										<label class="block">
+											<input name="rules[]" type="checkbox" class="ace" value="{$rules.id}" checked="">
+											<span class="lbl"> {$rules.title}</span>
+										</label>
+									</div>
+								{else}
+									<div class="checkbox">
+										<label>
+											<input name="rules[]" type="checkbox" class="ace"  value="{$rules.id}">
+											<span class="lbl"> {$rules.title}</span>
+										</label>
+									</div>
+									{/if}
+								{/volist}
+								</div>
+							</div>
+						</div>
+						<input type="hidden" name="url" value="{$Think.server.HTTP_REFERER}">
+						<div class="col-md-offset-3 col-md-9">
+							<button class="btn" type="reset">
+								<i class="icon-ok bigger-110"></i>
+								Reset
+							</button>
+							&nbsp; &nbsp; &nbsp;
+							<button class="btn btn-info" type="submit">
+								<i class="icon-undo bigger-110"></i>
+								Submit
+							</button>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+{/block}

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>login</title>
+	<link rel="stylesheet" href="">
+	{css href="/static/admin/css/bootstrap.min.css" /}
+	<style type="text/css" media="screen">
+		body {
+		  padding-top: 40px;
+		  padding-bottom: 40px;
+		  background-color: #3F4E62;
+		}
+		.form-signin{
+			background-color: white;
+			border-radius: 5px;
+		}
+
+		h2,h3{
+			text-align: center;
+			font-family: 微软雅黑;
+		}
+		h3{
+			color: white;
+			padding-bottom: 30px;
+		}
+	</style>
+
+</head>
+<body>
+    <div class="container">
+	  <h3 class="form-signin-heading">ThinkPHP5 Admin</h3>
+      <form class="form-signin col-md-4 col-md-offset-4" role="form" action="/publics/doLogin.html" method="post">
+		<h2>管理员登录</h2>
+<hr>
+		<div class="form-group">
+		    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email" name="email">
+		</div>
+
+		<div class="form-group">
+		    <input type="password" class="form-control" id="exampleInputEmail1" placeholder="Enter password" name="password">
+		</div>
+
+		<div class="input-group" >
+		  <span class="input-group-addon"><img src="{:url('publics/createCode')}" alt="" onclick="javascript:this.src='/publics/createcode.html?'+Math.random()"></span>
+		  <input type="text" class="form-control" placeholder="code" name="code">
+		</div>
+<hr>
+		<div class="form-group">
+			<small><a href="#" title="忘记密码？">忘记密码？</a><button type="submit" style="float: right" class="btn btn-primary">Login</button></small>
+		</div>
+
+<br>
+      </form>
+
+    </div> <!-- /container -->
+</body>
+</html>

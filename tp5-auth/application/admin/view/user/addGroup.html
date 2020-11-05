@@ -1,0 +1,81 @@
+{extend name="publics/base" /}
+{block name="body"}
+		<div class="breadcrumbs" id="breadcrumbs">
+			<script type="text/javascript">
+				try{ace.settings.check('breadcrumbs' , 'fixed')}catch(e){}
+			</script>
+
+			<ul class="breadcrumb">
+				<li>
+					<i class="icon-home home-icon"></i>
+					<a href="{:url('Index/index')}">首页</a>
+				</li>
+				<li class="active">用户管理</li>
+			</ul><!-- .breadcrumb -->
+		</div>
+
+		<div class="page-content">
+			<div class="page-header">
+				<h1>
+					用户管理
+					<small>
+						<i class="icon-double-angle-right"></i>
+						 添加用户组
+					</small>
+				</h1>
+			</div><!-- /.page-header -->
+
+			<div class="row">
+				<div class="col-xs-12">
+					<form class="form-horizontal row" role="form" method="post" action="">
+						<div class="form-group">
+							<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> 组名 </label>
+
+							<div class="col-sm-9">
+								<input type="text" id="form-field-1" placeholder="Username" name="title" class="col-xs-10 col-sm-5">
+							</div>
+						</div>
+
+						<div class="form-group">
+							<label class="col-sm-3 control-label no-padding-right" for="form-field-2"> 是否启用 </label>
+							<div class="col-sm-9">
+								<div class="col-xs-3">
+									<label>
+										<input class="ace ace-switch ace-switch-7" name="status" type="checkbox" checked="checked">
+										<span class="lbl"></span>
+									</label>
+								</div>
+							</div>
+						</div>
+	
+						<div class="form-group">
+							<label class="col-sm-3 control-label no-padding-right" for="form-field-2"> 添加权限 </label>
+							<div class="col-sm-2">
+								<div class="control-group">
+									{volist name="rules" id="rule"}
+									<div class="checkbox">
+										<label>
+											<input name="rules[]" type="checkbox" class="ace"  value="{$rule.id}">
+											<span class="lbl"> {$rule.title} </span>
+										</label>
+									</div>
+									{/volist}
+								</div>
+							</div>
+						</div>
+						<div class="col-md-offset-3 col-md-9">
+							<button class="btn" type="reset">
+								<i class="icon-ok bigger-110"></i>
+								Reset
+							</button>
+							&nbsp; &nbsp; &nbsp;
+							<button class="btn btn-info" type="submit">
+								<i class="icon-undo bigger-110"></i>
+								Submit
+							</button>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+{/block}

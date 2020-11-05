@@ -1,0 +1,207 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>权限管理系统</title>
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- basic styles -->
+    {css href="/static/admin/css/bootstrap.min.css" /}
+    {css href="/static/admin/css/font-awesome.min.css" /}
+    {css href="/static/admin/css/ace.min.css" /}
+    {css href="/static/admin/css/ace-rtl.min.css" /}
+    {css href="/static/admin/css/ace-skins.min.css" /}
+    
+
+
+    {block name="style"}{/block}
+</head>
+<div class="navbar navbar-default" id="navbar">
+    <script type="text/javascript">
+        try{ace.settings.check('navbar' , 'fixed')}catch(e){}
+    </script>
+    <div class="navbar-container" id="navbar-container">
+        <div class="navbar-header pull-left">
+            <a href="#" class="navbar-brand">
+                <small>
+                    <i class="icon-leaf"></i>
+                    实验楼后台管理系统
+                </small>
+            </a><!-- /.brand -->
+        </div><!-- /.头部-header -->
+
+        <div class="navbar-header pull-right" role="navigation">
+            <ul class="nav ace-nav">
+                <li class="light-blue">
+                    <a data-toggle="dropdown" href="#" class="dropdown-toggle">
+                        <img class="nav-user-photo" src="/static/admin/avatars/user.jpg" alt="Jason's Photo" />
+                        <span class="user-info">
+                            <small>欢迎光临,</small>
+                            {$Think.session.username}
+                        </span>
+
+                        <i class="icon-caret-down"></i>
+                    </a>
+
+                    <ul class="user-menu pull-right dropdown-menu dropdown-yellow dropdown-caret dropdown-close">
+                        <li>
+                            <a href="#">
+                                <i class="icon-cog"></i>
+                                设置
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="#">
+                                <i class="icon-user"></i>
+                                个人资料
+                            </a>
+                        </li>
+
+                        <li class="divider"></li>
+
+                        <li>
+                            <a href="{:url('publics/logout')}">
+                                <i class="icon-off"></i>
+                                退出
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<div class="main-container" id="main-container">
+    <script type="text/javascript">
+        try{ace.settings.check('main-container' , 'fixed')}catch(e){}
+    </script>
+
+    <div class="main-container-inner">
+        <a class="menu-toggler" id="menu-toggler" href="#">
+            <span class="menu-text"></span>
+        </a>
+        
+        <div class="sidebar" id="sidebar">
+            <script type="text/javascript">
+                try{ace.settings.check('sidebar' , 'fixed')}catch(e){}
+            </script>
+            <ul class="nav nav-list">
+                <li class="active">
+                    <a href="{:url('Index/index')}">
+                        <i class="icon-home"></i>
+                        <span class="menu-text"> 控制台 </span>
+                    </a>
+                </li>
+
+                <li class="active open">
+                    <a href="#" class="dropdown-toggle">
+                        <i class="icon-group"></i>
+                        <span class="menu-text"> 用户管理 </span>
+                        <b class="arrow icon-angle-down"></b>
+                    </a>
+
+                    <ul class="submenu">
+                        <li>
+                            <a href="{:url('User/index')}">
+                                <i class="icon-double-angle-right"></i>
+                                查看用户
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{:url('User/adduser')}">
+                                <i class="icon-double-angle-right"></i>
+                                添加用户
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{:url('User/groupList')}">
+                                <i class="icon-double-angle-right"></i>
+                                用户组列表
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{:url('User/addGroup')}">
+                                <i class="icon-double-angle-right"></i>
+                                添加用户组
+                            </a>
+                        </li>
+                        
+                    </ul>
+                </li>
+                <li class="active open">
+                    <a href="#" class="dropdown-toggle">
+                        <i class="icon-dashboard"></i>
+                        <span class="menu-text"> 权限管理 </span>
+
+                        <b class="arrow icon-angle-down"></b>
+                    </a>
+
+                    <ul class="submenu">
+                        <li>
+                            <a href="{:url('Auth/authList')}">
+                                <i class="icon-double-angle-right"></i>
+                                权限列表
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{:url('Auth/addAuth')}">
+                                <i class="icon-double-angle-right"></i>
+                                添加权限
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
+            </ul>
+
+            <div class="sidebar-collapse" id="sidebar-collapse">
+                <i class="icon-double-angle-left" data-icon1="icon-double-angle-left" data-icon2="icon-double-angle-right"></i>
+            </div>
+
+            <script type="text/javascript">
+                try{ace.settings.check('sidebar' , 'collapsed')}catch(e){}
+            </script>
+        </div>
+    
+
+        <div class="main-content">
+
+            {block name="body"}{/block}
+        
+        </div>
+
+    </div>
+    <a href="#" id="btn-scroll-up" class="btn-scroll-up btn btn-sm btn-inverse">
+        <i class="icon-double-angle-up icon-only bigger-110"></i>
+    </a>
+</div><!-- /.main-container -->
+
+{block name="footer"}{/block}
+
+<!--[if !IE]> -->
+
+{js href="/static/admin/js/ace-extra.min.js" /}
+{js href="/static/admin/js/jquery-2.0.3.min.js" /}
+
+
+<!-- <![endif]-->
+
+
+<script src="/static/admin/js/bootstrap.min.js"></script>
+<script src="/static/admin/js/typeahead-bs2.min.js"></script>
+
+<!-- page specific plugin scripts -->
+{block name="bootscript"}{/block}
+<!-- ace scripts -->
+
+<script src="/static/admin/js/ace-elements.min.js"></script>
+<script src="/static/admin/js/ace.min.js"></script>
+
+<!-- inline scripts related to this page -->
+
+{block name="script"}{/block}
+</body>
+</html>
